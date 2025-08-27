@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 
 import java.util.List;
 
@@ -17,8 +18,11 @@ import java.util.List;
 @Entity
 public class PrivateChat extends BaseEntity{
 
-    @Column(name="users", nullable = false)
-    private List<UserEntity> users;
+    @Column(name="user_one", nullable = false)
+    private UserEntity userOne;
+
+    @Column(name="user_two",nullable = false)
+    private UserEntity userTwo;
 
     @OneToMany(mappedBy = "privateChat")
     private List<PrivateMessage> messages;
